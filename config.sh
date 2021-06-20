@@ -50,8 +50,7 @@ systemctl stop systemd-resolved
 
 echo "add shecan dns ..."
 rm /etc/resolv.conf
-echo "nameserver "
-cat > /etc/docker/daemon.json <<EOF
+cat > /etc/resolv.conf <<EOF
 nameserver 178.22.122.100
 nameserver 185.51.200.2
 EOF
