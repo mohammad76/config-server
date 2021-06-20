@@ -28,8 +28,8 @@ update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
 update-alternatives --config python
 
 echo "${RED}install nodejs 14 ...."
-curl -sL https://deb.nodesource.com/setup_14.x | -E bash -
-apt-get install -y nodejs
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+apt install -y nodejs
 npm install -g npm@latest
 
 echo "${RED}install ddos deflate app ...."
