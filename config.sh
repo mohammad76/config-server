@@ -28,7 +28,8 @@ sysctl -w net.ipv6.conf.lo.disable_ipv6=1
 sysctl -p
 
 echo -e "${GREEN}install useful packages ....${NC}"
-apt install -y rkhunter supervisor net-tools htop build-essential iftop clamav clamav-daemon dnsutils dnsutils dsniff grepcidr software-properties-common
+apt install -y rkhunter supervisor net-tools htop fail2ban wget zip nmap git letsencrypt build-essential iftop clamav clamav-daemon dnsutils dnsutils dsniff grepcidr software-properties-common
+git config --global credential.helper store
 
 echo -e "${GREEN}install python 3.9 ....${NC}"
 add-apt-repository ppa:deadsnakes/ppa
