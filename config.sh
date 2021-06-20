@@ -38,6 +38,7 @@ update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
 update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
 update-alternatives --config python
+pip3 install --upgrade pip
 
 echo -e "${GREEN}install nodejs 14 ....${NC}"
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
