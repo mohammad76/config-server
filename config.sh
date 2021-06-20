@@ -2,8 +2,7 @@
 host_ip=$(hostname  -i)
 
 echo "updating os ..."
-apt update -y
-apt upgrade -y
+apt update -y && upgrade -y
 
 echo "disable ipv6 ..."
 sysctl -w net.ipv6.conf.all.disable_ipv6=1
