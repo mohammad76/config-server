@@ -62,7 +62,11 @@ echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 apt-get update
-apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
+apt-get install -y docker-ce docker-ce-cli containerd.io
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
 cat >/etc/docker/daemon.json <<EOF
 {
   "registry-mirrors": ["https://dockerhub.ir"]
