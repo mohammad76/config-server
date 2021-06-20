@@ -7,6 +7,17 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
+echo -e "${GREEN}disable systemd resolved ...${NC}"
+systemctl disable systemd-resolved.service
+systemctl stop systemd-resolved
+
+echo -e "${GREEN}add shecan dns ...${NC}"
+rm /etc/resolv.conf
+cat >/etc/resolv.conf <<EOF
+nameserver 178.22.122.100
+nameserver 185.51.200.2
+EOF
+
 echo -e "${GREEN}updating os ...${NC}"
 apt update -y && upgrade -y
 
@@ -57,13 +68,3 @@ cat >/etc/docker/daemon.json <<EOF
 EOF
 systemctl restart docker
 
-echo -e "${GREEN}disable systemd resolved ...${NC}"
-systemctl disable systemd-resolved.service
-systemctl stop systemd-resolved
-
-echo -e "${GREEN}add shecan dns ...${NC}"
-rm /etc/resolv.conf
-cat >/etc/resolv.conf <<EOF
-nameserver 178.22.122.100
-nameserver 185.51.200.2
-EOF
