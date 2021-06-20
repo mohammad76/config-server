@@ -11,15 +11,19 @@ sysctl -w net.ipv6.conf.lo.disable_ipv6=1
 sysctl -p
 
 echo "install useful packages ...."
-apt install -y rkhunter net-tools htop iftop clamav clamav-daemon dnsutils dnsutils dsniff grepcidr software-properties-common
+apt install -y rkhunter supervisor net-tools htop build-essential iftop clamav clamav-daemon dnsutils dnsutils dsniff grepcidr software-properties-common
 
 echo "install python 3.9 ...."
 add-apt-repository ppa:deadsnakes/ppa
-apt update && apt install python3.9
+apt update && apt install -y python3.9 python-pip
 update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
 update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
 update-alternatives --config python
+
+curl -sL https://deb.nodesource.com/setup_14.x | -E bash -
+apt-get install -y nodejs
+npm install -g npm@latest
 
 echo "install ddos deflate app ...."
 wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip
