@@ -39,7 +39,7 @@ update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
 pip3 install --upgrade pip
 
-echo -e "${GREEN}install nodejs 14 ....${NC}"
+echo -e "${GREEN}install nodejs 18 ....${NC}"
 curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 apt install -y nodejs
 npm install -g npm@latest
@@ -67,10 +67,14 @@ chmod +x /usr/local/bin/docker-compose
 rm /usr/bin/docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
-cat >/etc/docker/daemon.json <<EOF
+bash -c 'cat > /etc/docker/daemon.json <<EOF
 {
-  "registry-mirrors": ["https://dockerhub.ir"]
+  "insecure-registries" : ["https://docker.arvancloud.ir"],
+  "registry-mirrors": ["https://docker.arvancloud.ir"]
 }
-EOF
+EOF'
+
+docker logout
 systemctl restart docker
+
 
