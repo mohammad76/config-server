@@ -11,12 +11,15 @@ echo -e "${GREEN}disable systemd resolved ...${NC}"
 systemctl disable systemd-resolved.service
 systemctl stop systemd-resolved
 
-echo -e "${GREEN}add shecan dns ...${NC}"
+echo -e "${GREEN}add proxy dns ...${NC}"
 rm /etc/resolv.conf
 cat >/etc/resolv.conf <<EOF
 nameserver 10.202.10.202
 nameserver 10.202.10.102
 EOF
+
+echo -e "${GREEN}change server repo ...${NC}"
+sed -i 's/archive.ubuntu.com/mirror.arvancloud.ir/g' /etc/apt/sources.list
 
 echo -e "${GREEN}updating os ...${NC}"
 apt update -y && upgrade -y
