@@ -30,6 +30,11 @@ sysctl -w net.ipv6.conf.default.disable_ipv6=1
 sysctl -w net.ipv6.conf.lo.disable_ipv6=1
 sysctl -p
 
+debconf-set-selections <<EOF
+iptables-persistent iptables-persistent/autosave_v4 boolean true
+iptables-persistent iptables-persistent/autosave_v6 boolean true
+EOF
+
 echo -e "${GREEN}install useful packages ....${NC}"
 DEBIAN_FRONTEND=noninteractive apt install -y rkhunter supervisor net-tools htop fail2ban wget zip nmap git letsencrypt build-essential iftop dnsutils dnsutils dsniff grepcidr software-properties-common
 git config --global credential.helper store
