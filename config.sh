@@ -50,6 +50,7 @@ update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
 update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
 pip3 install --upgrade pip
+pip3 install ibackupper
 
 echo -e "${GREEN}install nodejs 18 ....${NC}"
 curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
