@@ -47,6 +47,7 @@ echo -e "${GREEN}install python 3.9 ....${NC}"
 add-apt-repository ppa:deadsnakes/ppa --yes
 apt update && apt install -y python3.9 python3-pip
 update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
+update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
 update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 3
 pip3 install --upgrade pip
