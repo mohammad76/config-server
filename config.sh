@@ -54,6 +54,14 @@ pip3 install --upgrade pip
 pip3 config set global.index-url https://pypi.iranrepo.ir/simple
 pip3 install ibackupper
 
+echo -e "${GREEN}install Minio mc ....${NC}"
+curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+  --create-dirs \
+  -o $HOME/minio-binaries/mc
+
+chmod +x $HOME/minio-binaries/mc
+export PATH=$PATH:$HOME/minio-binaries/
+
 echo -e "${GREEN}install nodejs 18 ....${NC}"
 curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 apt install -y nodejs
