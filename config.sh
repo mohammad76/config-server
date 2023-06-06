@@ -54,9 +54,9 @@ pip3 install ibackupper
 echo -e "${GREEN}install Minio mc ....${NC}"
 curl https://public-chabok.s3.ir-thr-at1.arvanstorage.com/minio-mc \
   --create-dirs \
-  -o /usr/local/mc
+  -o /usr/local/bin/mc
 
-chmod +x /usr/local/mc
+chmod +x /usr/local/bin/mc
 
 echo -e "${GREEN}install nodejs 18 ....${NC}"
 curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
