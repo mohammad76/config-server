@@ -52,7 +52,7 @@ pip3 config set global.index-url https://pypi.iranrepo.ir/simple
 pip3 install ibackupper
 
 echo -e "${GREEN}install Minio mc ....${NC}"
-curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+curl https://public-chabok.s3.ir-thr-at1.arvanstorage.com/minio-mc \
   --create-dirs \
   -o $HOME/minio-binaries/mc
 
