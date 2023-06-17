@@ -24,6 +24,7 @@ EOF
 
 echo -e "${GREEN}change server repo ...${NC}"
 sed -i 's/archive.ubuntu.com/mirror.arvancloud.ir/g' /etc/apt/sources.list
+sed -i 's/ir.mirror.arvancloud.ir/mirror.arvancloud.ir/g' /etc/apt/sources.list
 
 echo -e "${GREEN}updating os ...${NC}"
 apt update -y && upgrade -y
