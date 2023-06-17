@@ -18,8 +18,8 @@ systemctl stop systemd-resolved
 echo -e "${GREEN}add proxy dns ...${NC}"
 rm /etc/resolv.conf
 cat >/etc/resolv.conf <<EOF
-nameserver 178.22.122.100
-nameserver 185.51.200.2
+nameserver 10.202.10.202
+nameserver 10.202.10.102
 EOF
 
 echo -e "${GREEN}change server repo ...${NC}"
