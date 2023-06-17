@@ -61,7 +61,7 @@ chmod +x /usr/local/bin/mc
 
 echo -e "${GREEN}install nodejs 18 ....${NC}"
 curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-apt install -y nodejs
+#apt install -y nodejs
 #npm install -g npm@latest
 
 echo -e "${GREEN}install docker ....${NC}"
