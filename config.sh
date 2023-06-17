@@ -49,7 +49,7 @@ add-apt-repository ppa:deadsnakes/ppa --yes
 apt update && apt install -y python3-pip
 
 pip3 install --upgrade pip
-pip3 config set global.index-url https://pypi.iranrepo.ir/simple
+#pip3 config set global.index-url https://pypi.iranrepo.ir/simple
 pip3 install ibackupper
 
 echo -e "${GREEN}install Minio mc ....${NC}"
@@ -62,15 +62,7 @@ chmod +x /usr/local/bin/mc
 echo -e "${GREEN}install nodejs 18 ....${NC}"
 curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 apt install -y nodejs
-npm install -g npm@latest
-
-echo -e "${GREEN}install ddos deflate app ....${NC}"
-wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip
-unzip ddos.zip
-./ddos-deflate-master/install.sh
-rm /etc/ddos/ignore.ip.list
-cp ./ignore.ip.list /etc/ddos/ignore.ip.list
-echo "$host_ip/32" >>/etc/ddos/ignore.ip.list
+#npm install -g npm@latest
 
 echo -e "${GREEN}install docker ....${NC}"
 apt-get remove docker docker-engine docker.io containerd runc
