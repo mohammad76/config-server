@@ -1,5 +1,6 @@
 #!/bin/bash
-host_ip=$(hostname -i)
+read -p "Enter Server IP: " NODE_IP
+read -p "is an Iran Server?[y/n] " IR_SERVER
 
 # Color
 RED='\033[0;31m'
@@ -15,12 +16,25 @@ echo -e "${GREEN}disable systemd resolved ...${NC}"
 systemctl disable systemd-resolved.service
 systemctl stop systemd-resolved
 
-echo -e "${GREEN}add proxy dns ...${NC}"
-rm /etc/resolv.conf
+if [ $IR_SERVER = "y" ]; then
+    echo -e "${GREEN}add proxy dns ...${NC}"
+    rm /etc/resolv.conf
 cat >/etc/resolv.conf <<EOF
+options timeout:1
 nameserver 10.202.10.202
 nameserver 10.202.10.102
+nameserver 178.22.122.100
+nameserver 185.51.200.2
 EOF
+else
+    echo -e "${GREEN}add base dns ...${NC}"
+    rm /etc/resolv.conf
+cat >/etc/resolv.conf <<EOF
+options timeout:1
+nameserver 8.8.8.8
+nameserver 1.1.1.1
+EOF
+fi
 
 echo -e "${GREEN}change server repo ...${NC}"
 sed -i 's/archive.ubuntu.com/mirror.arvancloud.ir/g' /etc/apt/sources.list
@@ -80,14 +94,19 @@ chmod +x /usr/local/bin/docker-compose
 rm /usr/bin/docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
+if [ $IR_SERVER = "y" ]; then
 bash -c 'cat > /etc/docker/daemon.json <<EOF
 {
   "insecure-registries" : ["https://docker.arvancloud.ir"],
   "registry-mirrors": ["https://docker.arvancloud.ir"]
 }
 EOF'
-
 docker logout
 systemctl restart docker
+fi
+
+
+echo -e "${GREEN}server configed successfully. enjoy your server :)${NC}"
+
 
 
