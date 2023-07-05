@@ -41,7 +41,7 @@ iptables-persistent iptables-persistent/autosave_v6 boolean true
 EOF
 
 echo -e "${GREEN}install useful packages ....${NC}"
-DEBIAN_FRONTEND=noninteractive apt install -y rkhunter supervisor net-tools htop fail2ban wget zip nmap git letsencrypt build-essential iftop dnsutils dnsutils dsniff grepcidr software-properties-common
+DEBIAN_FRONTEND=noninteractive apt install -y rkhunter supervisor net-tools htop fail2ban wget zip nmap git letsencrypt build-essential iftop dnsutils dsniff grepcidr iotop rsync atop software-properties-common
 git config --global credential.helper store
 
 echo -e "${GREEN}install python lib ....${NC}"
@@ -59,7 +59,7 @@ curl https://public-chabok.s3.ir-thr-at1.arvanstorage.com/minio-mc \
 
 chmod +x /usr/local/bin/mc
 
-echo -e "${GREEN}install nodejs 18 ....${NC}"
+#echo -e "${GREEN}install nodejs 18 ....${NC}"
 #curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 #apt install -y nodejs
 #npm install -g npm@latest
