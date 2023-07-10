@@ -26,6 +26,12 @@ nameserver 10.202.10.102
 nameserver 178.22.122.100
 nameserver 185.51.200.2
 EOF
+
+
+echo -e "${GREEN}change server repo ...${NC}"
+sed -i 's/archive.ubuntu.com/mirror.arvancloud.ir/g' /etc/apt/sources.list
+sed -i 's/ir.mirror.arvancloud.ir/mirror.arvancloud.ir/g' /etc/apt/sources.list
+
 else
     echo -e "${GREEN}add base dns ...${NC}"
     rm /etc/resolv.conf
@@ -35,10 +41,6 @@ nameserver 8.8.8.8
 nameserver 1.1.1.1
 EOF
 fi
-
-echo -e "${GREEN}change server repo ...${NC}"
-sed -i 's/archive.ubuntu.com/mirror.arvancloud.ir/g' /etc/apt/sources.list
-sed -i 's/ir.mirror.arvancloud.ir/mirror.arvancloud.ir/g' /etc/apt/sources.list
 
 echo -e "${GREEN}updating os ...${NC}"
 apt update -y && upgrade -y
