@@ -107,7 +107,7 @@ docker logout
 systemctl restart docker
 fi
 
-apt purge postfix
+apt purge postfix -y
 
 echo -e "${GREEN}server configed successfully. enjoy your server :)${NC}"
 
