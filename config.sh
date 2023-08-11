@@ -100,8 +100,8 @@ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 if [ $IR_SERVER = "y" ]; then
 bash -c 'cat > /etc/docker/daemon.json <<EOF
 {
-  "insecure-registries" : ["https://docker.arvancloud.ir"],
-  "registry-mirrors": ["https://docker.arvancloud.ir"]
+  "insecure-registries" : ["https://docker.chabokan.net"],
+  "registry-mirrors": ["https://docker.chabokan.net"]
 }
 EOF'
 docker logout
