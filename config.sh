@@ -113,6 +113,7 @@ else
     echo "not proper version, please check your ubuntu version first."
 
 fi
+apt-mark hold docker-ce docker-ce-cli
 
 #sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 #chmod +x /usr/local/bin/docker-compose
