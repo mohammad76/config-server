@@ -93,7 +93,26 @@ echo \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+#sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+UBUNTU_VERSION=$(lsb_release -c)
+UBUNTU_VERSION=${UBUNTU_VERSION#*:}
+if [ $UBUNTU_VERSION = "focal" ]; then
+
+    echo "install focal"
+    VERSION_STRING=5:25.0.3-1~ubuntu.20.04~focal
+    sudo apt-get install -y docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+
+elif [ $UBUNTU_VERSION = "jammy" ]; then
+    echo "install jammy"
+    VERSION_STRING=5:25.0.3-1~ubuntu.22.04~jammy
+    sudo apt-get install -y docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+
+else
+
+    echo "not proper version, please check your ubuntu version first."
+
+fi
 
 #sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 #chmod +x /usr/local/bin/docker-compose
