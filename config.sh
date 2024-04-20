@@ -42,7 +42,7 @@ EOF
 fi
 
 echo -e "${GREEN}updating os ...${NC}"
-apt update -y && apt upgrade -y
+apt update -y
 
 echo -e "${GREEN}disable ipv6 ...${NC}"
 sysctl -w net.ipv6.conf.all.disable_ipv6=1
