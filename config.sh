@@ -64,7 +64,6 @@ add-apt-repository ppa:deadsnakes/ppa --yes
 apt update && apt install -y python3-pip
 
 pip3 install --upgrade pip
-#pip3 config set global.index-url https://pypi.iranrepo.ir/simple
 pip3 install ibackupper
 
 echo -e "${GREEN}install Minio mc ....${NC}"
@@ -73,11 +72,6 @@ curl https://public-chabok.s3.ir-thr-at1.arvanstorage.com/minio-mc-new \
   -o /usr/local/bin/mc
 
 chmod +x /usr/local/bin/mc
-
-#echo -e "${GREEN}install nodejs 18 ....${NC}"
-#curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-#apt install -y nodejs
-#npm install -g npm@latest
 
 echo -e "${GREEN}install docker ....${NC}"
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
@@ -93,7 +87,6 @@ echo \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
-#sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 UBUNTU_VERSION=$(lsb_release -c)
 UBUNTU_VERSION=${UBUNTU_VERSION#*:}
@@ -114,11 +107,6 @@ else
 
 fi
 apt-mark hold docker-ce docker-ce-cli
-
-#sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-#chmod +x /usr/local/bin/docker-compose
-#rm /usr/bin/docker-compose
-# ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 if [ $IR_SERVER = "y" ]; then
 bash -c 'cat > /etc/docker/daemon.json <<EOF
