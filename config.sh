@@ -29,6 +29,16 @@ echo -e "${GREEN}disable systemd resolved ...${NC}"
 systemctl disable systemd-resolved.service
 systemctl stop systemd-resolved
 
+if [ "$COUNTRY" = "IR" ]; then
+ curl https://ddns.shecan.ir/update?password=1e24cbe0ff267c08
+    echo -e "\nAdding Server IP to Our System, Please Wait ..."
+    sleep 90
+    rm /etc/resolv.conf
+    cat >/etc/resolv.conf <<EOF
+options timeout:1
+nameserver 178.22.122.101
+nameserver 185.51.200.1
+EOF
 else
     echo -e "${GREEN}add base dns ...${NC}"
     rm /etc/resolv.conf
